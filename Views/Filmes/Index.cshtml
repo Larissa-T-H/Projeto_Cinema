@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Cinema.Models.Filme>
+
+@{
+    ViewData["Title"] = "Filmes";
+}
+
+<h1>Filmes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-warning">Cadastrar</a>
+</p>
+<table class="table">
+  
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+        </tr>      
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sinopse)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sinopse)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FilmeId"><img src="~/img/edit.png" width="30"/></a>       
+                <a asp-action="Details" asp-route-id="@item.FilmeId"><img src="~/img/detalhes.png" width="30"/></a> 
+                <a asp-action="Delete" asp-route-id="@item.FilmeId"><img src="~/img/delete.png" width="30"/></a>
+            </td>
+        </tr>       
+}
+    </tbody>
+</table>

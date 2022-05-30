@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Cinema.Models.Ingresso>
+
+@{
+    ViewData["Title"] = "Ingresso";
+}
+
+<h1>Ingresso</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-warning">Comprar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IngressoInteiro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IngressoMeia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sessao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fileira)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssentoNum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IngressoInteiro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IngressoMeia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sessao.SessaoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fileira)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssentoNum)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IngressoId"><img src="~/img/edit.png" width="30"/></a> 
+                <a asp-action="Details" asp-route-id="@item.IngressoId"><img src="~/img/detalhes.png" width="30"/></a> 
+                <a asp-action="Delete" asp-route-id="@item.IngressoId"><img src="~/img/delete.png" width="30"/></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

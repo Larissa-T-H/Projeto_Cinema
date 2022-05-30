@@ -1,0 +1,72 @@
+﻿@model Cinema.Models.Ingresso
+
+@{
+    ViewData["Title"] = "Ingresso";
+}
+
+<h1>Ingresso</h1>
+<hr />
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-2">
+                     <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IngressoInteiro" /> @Html.DisplayNameFor(model => model.IngressoInteiro)
+                        </label>
+                    </div>                  
+                </div>
+                <div class="col-2">                 
+                     <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IngressoMeia" /> @Html.DisplayNameFor(model => model.IngressoMeia)
+                        </label>        
+                    </div>
+                </div>
+             </div>
+            <div class="row">
+                <div class="col-3">
+                     <div class="form-group">
+                         <label asp-for="Preco" class="control-label"></label>
+                        <input asp-for="Preco" class="form-control" />
+                        <span asp-validation-for="Preco" class="text-danger"></span>                   
+                    </div>
+                </div>
+                <div class="col-3">
+                     <div class="form-group">
+                        <label asp-for="SessaoId" class="control-label"></label>
+                        <select asp-for="SessaoId" class ="form-control" asp-items="ViewBag.SessaoId"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                     <div class="form-group">
+                         <label asp-for="Fileira" class="control-label"></label>
+                        <input asp-for="Fileira" class="form-control" />
+                        <span asp-validation-for="Fileira" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-3">                 
+                    <div class="form-group">
+                        <label asp-for="AssentoNum" class="control-label"></label>
+                        <input asp-for="AssentoNum" class="form-control" />
+                        <span asp-validation-for="AssentoNum" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>      
+             
+            <div class="form-group">
+                <input type="submit" value="Comprar" class="btn btn-outline-success" />
+                <a asp-action="Index"class="btn btn-outline-secondary">Voltar</a>
+            </div>
+        </form>
+ 
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Cinema.Models.Sala>
+
+@{
+    ViewData["Title"] = "Sala";
+}
+
+    <h1>Salas</h1>
+    <p>
+        <a asp-action="Create"class="btn btn-outline-warning">Cadastrar</a>
+    </p>
+    <table class="table">
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalaNum)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SalaId"><img src="~/img/edit.png" width="30"/></a> |
+                    <a asp-action="Details" asp-route-id="@item.SalaId"><img src="~/img/detalhes.png" width="30"/></a> |
+                    <a asp-action="Delete" asp-route-id="@item.SalaId"><img src="~/img/delete.png" width="30"/></a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+
